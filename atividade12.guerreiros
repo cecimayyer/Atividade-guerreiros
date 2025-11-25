@@ -1,0 +1,419 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOP2rNK8+z9XP907PkAxmOQ",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/cecimayyer/Atividade-guerreiros/blob/main/atividade12.guerreiros\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "guerreiro"
+      ],
+      "metadata": {
+        "id": "sGrHoqsh3dlj"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Guerreiro:\n",
+        "    def __init__(self, nome, vida, forca):\n",
+        "        self.nome = nome\n",
+        "        self.vida = vida\n",
+        "        self.forca = forca\n",
+        "        self.arma = None\n",
+        "\n",
+        "    def equipar(self, arma):\n",
+        "        self.arma = arma\n",
+        "        print(f\"{self.nome} agora está equipado com {arma.nome}!\")\n",
+        "\n",
+        "    def atacar(self, alvo):\n",
+        "        poder_arma = self.arma.dano if self.arma else 0\n",
+        "        dano_total = self.forca + poder_arma\n",
+        "        print(f\"{self.nome} ataca {alvo.nome} causando {dano_total} de dano!\")\n",
+        "\n",
+        "    def __str__(self):\n",
+        "        arma_nome = self.arma.nome if self.arma else \"Nenhuma\"\n",
+        "        return f\"[Guerreiro] {self.nome} | Vida: {self.vida} | Força: {self.forca} | Arma: {arma_nome}\"\n"
+      ],
+      "metadata": {
+        "id": "Zf9tJevu3g5d"
+      },
+      "execution_count": 1,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "mago"
+      ],
+      "metadata": {
+        "id": "V5yc6C7p3mtb"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Mago:\n",
+        "    def __init__(self, nome, vida, poder_magico):\n",
+        "        self.nome = nome\n",
+        "        self.vida = vida\n",
+        "        self.poder_magico = poder_magico\n",
+        "        self.arma = None\n",
+        "\n",
+        "    def equipar(self, arma):\n",
+        "        self.arma = arma\n",
+        "        print(f\"{self.nome} agora usa o {arma.nome}!\")\n",
+        "\n",
+        "    def atacar(self, alvo):\n",
+        "        poder_arma = self.arma.dano if self.arma else 0\n",
+        "        dano_total = self.poder_magico + poder_arma\n",
+        "        print(f\"{self.nome} lança magia contra {alvo.nome}, causando {dano_total} de dano!\")\n",
+        "\n",
+        "    def __str__(self):\n",
+        "        arma_nome = self.arma.nome if self.arma else \"Nenhuma\"\n",
+        "        return f\"[Mago] {self.nome} | Vida: {self.vida} | Poder Mágico: {self.poder_magico} | Arma: {arma_nome}\"\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "p3UfzUih3oBk"
+      },
+      "execution_count": 2,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "arqueiro"
+      ],
+      "metadata": {
+        "id": "6ErFwwTX3457"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Arqueiro:\n",
+        "    def __init__(self, nome, vida, precisao):\n",
+        "        self.nome = nome\n",
+        "        self.vida = vida\n",
+        "        self.precisao = precisao\n",
+        "        self.arma = None\n",
+        "\n",
+        "    def equipar(self, arma):\n",
+        "        self.arma = arma\n",
+        "        print(f\"{self.nome} equipou o arco {arma.nome}!\")\n",
+        "\n",
+        "    def atacar(self, alvo):\n",
+        "        poder_arma = self.arma.dano if self.arma else 0\n",
+        "        dano_total = self.precisao + poder_arma\n",
+        "        print(f\"{self.nome} dispara uma flecha em {alvo.nome} causando {dano_total} de dano!\")\n",
+        "\n",
+        "    def __str__(self):\n",
+        "        arma_nome = self.arma.nome if self.arma else \"Nenhuma\"\n",
+        "        return f\"[Arqueiro] {self.nome} | Vida: {self.vida} | Precisão: {self.precisao} | Arma: {arma_nome}\""
+      ],
+      "metadata": {
+        "id": "SDq2-C8y39xz"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "monstro"
+      ],
+      "metadata": {
+        "id": "A9v_AmJz3_Wl"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Monstro:\n",
+        "    def __init__(self, nome, vida, ataque):\n",
+        "        self.nome = nome\n",
+        "        self.vida = vida\n",
+        "        self.ataque = ataque\n",
+        "\n",
+        "    def atacar(self, alvo):\n",
+        "        print(f\"{self.nome} ataca {alvo.nome}, causando {self.ataque} de dano!\")\n",
+        "\n",
+        "    def __str__(self):\n",
+        "        return f\"[Monstro] {self.nome} | Vida: {self.vida} | Ataque: {self.ataque}\"\n"
+      ],
+      "metadata": {
+        "id": "23_7D1_94Dsf"
+      },
+      "execution_count": 3,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "monstro + goblin"
+      ],
+      "metadata": {
+        "id": "BpVS55q04J81"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Monstro:\n",
+        "    def __init__(self, nome, vida, ataque):\n",
+        "        self.nome = nome\n",
+        "        self.vida = vida\n",
+        "        self.ataque = ataque\n",
+        "\n",
+        "    def atacar(self, alvo):\n",
+        "        print(f\"{self.nome} ataca {alvo.nome}, causando {self.ataque} de dano!\")\n",
+        "\n",
+        "    def __str__(self):\n",
+        "        return f\"[Monstro] {self.nome} | Vida: {self.vida} | Ataque: {self.ataque}\"\n",
+        "\n",
+        "goblin = Monstro(\"Goblin Verdejante\", 30, 5)"
+      ],
+      "metadata": {
+        "id": "GvpUd6oL4SBj"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "classe arma"
+      ],
+      "metadata": {
+        "id": "n0aR9iMm4cbi"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Arma:\n",
+        "    def __init__(self, nome, dano):\n",
+        "        self.nome = nome\n",
+        "        self.dano = dano\n",
+        "\n",
+        "    def __str__(self):\n",
+        "        return f\"Arma: {self.nome} | Dano: {self.dano}\"\n",
+        "\n",
+        "\n",
+        "espada_longa = Arma(\"Espada Longa Solar\", 12)\n",
+        "cajado_magico = Arma(\"Cajado Arcano do Vento\", 9)"
+      ],
+      "metadata": {
+        "id": "OoF9KNOt4hGM"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "porção"
+      ],
+      "metadata": {
+        "id": "NUwmK8qR4i2a"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Pocao:\n",
+        "    def __init__(self, nome, cura):\n",
+        "        self.nome = nome\n",
+        "        self.cura = cura\n",
+        "\n",
+        "    def __str__(self):\n",
+        "        return f\"Poção: {self.nome} | Cura: {self.cura}\"\n",
+        "\n",
+        "pocao_vida = Pocao(\"Poção de Vida Rubra\", 25)"
+      ],
+      "metadata": {
+        "id": "T42EMf354nxC"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "10"
+      ],
+      "metadata": {
+        "id": "WFFvzk9Y4o_K"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Guerreiro:\n",
+        "    def __init__(self, nome, vida, forca):\n",
+        "        self.nome = nome\n",
+        "        self.vida = vida\n",
+        "        self.forca = forca\n",
+        "        self.arma = None\n",
+        "\n",
+        "    def equipar(self, arma):\n",
+        "        self.arma = arma\n",
+        "        print(f\"{self.nome} agora está equipado com {arma.nome}!\")\n",
+        "\n",
+        "    def atacar(self, alvo):\n",
+        "        poder_arma = self.arma.dano if self.arma else 0\n",
+        "        dano_total = self.forca + poder_arma\n",
+        "        print(f\"{self.nome} ataca {alvo.nome} causando {dano_total} de dano!\")\n",
+        "\n",
+        "    def __str__(self):\n",
+        "        arma_nome = self.arma.nome if self.arma else \"Nenhuma\"\n",
+        "        return f\"[Guerreiro] {self.nome} | Vida: {self.vida} | Força: {self.forca} | Arma: {arma_nome}\"\n",
+        "\n",
+        "class Mago:\n",
+        "    def __init__(self, nome, vida, poder_magico):\n",
+        "        self.nome = nome\n",
+        "        self.vida = vida\n",
+        "        self.poder_magico = poder_magico\n",
+        "        self.arma = None\n",
+        "\n",
+        "    def equipar(self, arma):\n",
+        "        self.arma = arma\n",
+        "        print(f\"{self.nome} agora usa o {arma.nome}!\")\n",
+        "\n",
+        "    def atacar(self, alvo):\n",
+        "        poder_arma = self.arma.dano if self.arma else 0\n",
+        "        dano_total = self.poder_magico + poder_arma\n",
+        "        print(f\"{self.nome} lança magia contra {alvo.nome}, causando {dano_total} de dano!\")\n",
+        "\n",
+        "    def __str__(self):\n",
+        "        arma_nome = self.arma.nome if self.arma else \"Nenhuma\"\n",
+        "        return f\"[Mago] {self.nome} | Vida: {self.vida} | Poder Mágico: {self.poder_magico} | Arma: {arma_nome}\"\n",
+        "\n",
+        "class Arqueiro:\n",
+        "    def __init__(self, nome, vida, precisao):\n",
+        "        self.nome = nome\n",
+        "        self.vida = vida\n",
+        "        self.precisao = precisao\n",
+        "        self.arma = None\n",
+        "\n",
+        "    def equipar(self, arma):\n",
+        "        self.arma = arma\n",
+        "        print(f\"{self.nome} equipou o arco {arma.nome}!\")\n",
+        "\n",
+        "    def atacar(self, alvo):\n",
+        "        poder_arma = self.arma.dano if self.arma else 0\n",
+        "        dano_total = self.precisao + poder_arma\n",
+        "        print(f\"{self.nome} dispara uma flecha em {alvo.nome} causando {dano_total} de dano!\")\n",
+        "\n",
+        "    def __str__(self):\n",
+        "        arma_nome = self.arma.nome if self.arma else \"Nenhuma\"\n",
+        "        return f\"[Arqueiro] {self.nome} | Vida: {self.vida} | Precisão: {self.precisao} | Arma: {arma_nome}\"\n",
+        "\n",
+        "class Monstro:\n",
+        "    def __init__(self, nome, vida, ataque):\n",
+        "        self.nome = nome\n",
+        "        self.vida = vida\n",
+        "        self.ataque = ataque\n",
+        "\n",
+        "    def atacar(self, alvo):\n",
+        "        print(f\"{self.nome} ataca {alvo.nome}, causando {self.ataque} de dano!\")\n",
+        "\n",
+        "    def __str__(self):\n",
+        "        return f\"[Monstro] {self.nome} | Vida: {self.vida} | Ataque: {self.ataque}\"\n",
+        "\n",
+        "class Arma:\n",
+        "    def __init__(self, nome, dano):\n",
+        "        self.nome = nome\n",
+        "        self.dano = dano\n",
+        "\n",
+        "    def __str__(self):\n",
+        "        return f\"Arma: {self.nome} | Dano: {self.dano}\"\n",
+        "\n",
+        "class Pocao:\n",
+        "    def __init__(self, nome, cura):\n",
+        "        self.nome = nome\n",
+        "        self.cura = cura\n",
+        "\n",
+        "    def __str__(self):\n",
+        "        return f\"Poção: {self.nome} | Cura: {self.cura}\"\n",
+        "\n",
+        "goblin = Monstro(\"Goblin Verdejante\", 30, 5)\n",
+        "espada_longa = Arma(\"Espada Longa Solar\", 12)\n",
+        "cajado_magico = Arma(\"Cajado Arcano do Vento\", 9)\n",
+        "pocao_vida = Pocao(\"Poção de Vida Rubra\", 25)\n",
+        "\n",
+        "if __name__ == \"__main__\":\n",
+        "    guerreiro = Guerreiro(\"Bronthar\", 120, 15)\n",
+        "    mago = Mago(\"Eldorin\", 80, 18)\n",
+        "    arqueiro = Arqueiro(\"Sylvara\", 90, 14)\n",
+        "\n",
+        "    print(guerreiro)\n",
+        "    print(mago)\n",
+        "    print(arqueiro)\n",
+        "    print(goblin)\n",
+        "\n",
+        "    guerreiro.equipar(espada_longa)\n",
+        "    mago.equipar(cajado_magico)\n",
+        "\n",
+        "    guerreiro.atacar(goblin)\n",
+        "    mago.atacar(goblin)\n",
+        "    arqueiro.atacar(goblin)\n",
+        "    goblin.atacar(guerreiro)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "wRtNqzwo4xv9",
+        "outputId": "d2ad4580-8124-4eef-c50d-67c5863959d0"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[Guerreiro] Bronthar | Vida: 120 | Força: 15 | Arma: Nenhuma\n",
+            "[Mago] Eldorin | Vida: 80 | Poder Mágico: 18 | Arma: Nenhuma\n",
+            "[Arqueiro] Sylvara | Vida: 90 | Precisão: 14 | Arma: Nenhuma\n",
+            "[Monstro] Goblin Verdejante | Vida: 30 | Ataque: 5\n",
+            "Bronthar agora está equipado com Espada Longa Solar!\n",
+            "Eldorin agora usa o Cajado Arcano do Vento!\n",
+            "Bronthar ataca Goblin Verdejante causando 27 de dano!\n",
+            "Eldorin lança magia contra Goblin Verdejante, causando 27 de dano!\n",
+            "Sylvara dispara uma flecha em Goblin Verdejante causando 14 de dano!\n",
+            "Goblin Verdejante ataca Bronthar, causando 5 de dano!\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
