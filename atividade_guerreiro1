@@ -1,0 +1,328 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyOSKoX7Fgw+3h43/JZnWhmi",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/cecimayyer/Atividade-guerreiros/blob/main/atividade_guerreiro1\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "personagem"
+      ],
+      "metadata": {
+        "id": "VlmOQoc2wyTM"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Personagem:\n",
+        "    def __init__(self,nome,vida,):\n",
+        "        self.nome = nome\n",
+        "        self._vida = vida   # atributo protegido\n",
+        "\n",
+        "\n",
+        "    @property\n",
+        "    def vida(self):\n",
+        "        return self._vida\n",
+        "\n",
+        "    @vida.setter\n",
+        "    def vida(self, novo_valor):\n",
+        "            if novo_valor < 0:\n",
+        "                print(\"A vida não pode ser negativa! \")\n",
+        "                return\n",
+        "            self._vida = novo_valor\n",
+        "\n",
+        "    def receber_dano(self, dano):\n",
+        "        print(f\"{self.nome} recebeu {dano} de dano!\")\n",
+        "\n",
+        "        # Reduz a vida usando o setter\n",
+        "        self.vida = self.vida - dano\n",
+        "\n",
+        "        # Verifica se morreu\n",
+        "        if self.vida == 0:\n",
+        "            print(f\"{self.nome} morreu!\")\n",
+        "        else:\n",
+        "            print(f\"Vida restante de {self.nome}: {self.vida}\")\n",
+        "\n",
+        "    def atacar(self, alvo):\n",
+        "        print(f\"{self.nome} atacou {alvo.nome}!\")\n",
+        "        dano = self.forca\n",
+        "        print(f\"{self.nome} causou {dano} de dano!\")\n",
+        "        alvo.receber_dano(dano)"
+      ],
+      "metadata": {
+        "id": "_zyh57yuva5s"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "mago"
+      ],
+      "metadata": {
+        "id": "MPF9owm5w1WS"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "\n",
+        "class Mago:\n",
+        "    def __init__(self, nome, vida, força, mana, arma):\n",
+        "        self.nome = nome\n",
+        "        self.vida = vida\n",
+        "        self.força = força\n",
+        "        self.mana = mana\n",
+        "        self.arma = arma\n",
+        "\n",
+        "    def ataque_s(self):\n",
+        "        print(\"FIRE BALL °°°°!!!\")\n",
+        "\n",
+        "    def ataque_Cajado(self):\n",
+        "        print(f\"Ataque com magia!! Dano:{self.força + self.arma.power}\")\n",
+        "\n",
+        "Cajado = Armas('Cajado',25)\n",
+        "Gargula_M = Mago('Gargula',60,10,200,Cajado)\n",
+        "\n",
+        "print(f'Ola Mago:{Gargula_M.nome}')\n",
+        "print(f'Sua vida total é atualmente {Gargula_M.vida}')\n",
+        "print(f'Possui Força {Gargula_M.força} e para magias {Gargula_M.mana} mana total\\n')\n",
+        "\n",
+        "#açoes\n",
+        "Gargula_M.ataque_s()\n",
+        "Gargula_M.ataque_Cajado()\n",
+        "\n",
+        "#ESPAÇ_O\n",
+        "print(\"       \")"
+      ],
+      "metadata": {
+        "id": "dshzXTxev6CS"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "porcoes"
+      ],
+      "metadata": {
+        "id": "sMfowZQ-w3Gi"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(\"       \")\n",
+        "\n",
+        "class Porçoes:\n",
+        "    def __init__(self, nome, valor):\n",
+        "        self.nome = nome\n",
+        "        self.valor = valor\n",
+        "\n",
+        "# Porções\n",
+        "Porçao_de_cura = Porçoes('Porção_de_cura',20)"
+      ],
+      "metadata": {
+        "id": "AuouT9GUv_uD"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "\n",
+        "class Guerreiro:\n",
+        "    def __init__(self, nome, vida, força, arma):\n",
+        "        self.nome = nome\n",
+        "        self.vida = vida\n",
+        "        self.força = força\n",
+        "        self.arma = arma\n",
+        "\n",
+        "    def ataque_s(self):\n",
+        "        print(\"VC TOMOU UMA PORRADA FRACA!!\")\n",
+        "\n",
+        "    def ataque_espada(self):\n",
+        "        print(f\"Ataque com a espada!! Dano:{self.força + self.arma.power}\")\n",
+        "\n",
+        "\n",
+        "Espada = Armas(\"espada\",25)\n",
+        "Alastor_G = Guerreiro('Alastor',150,30,Espada)\n",
+        "\n",
+        "print(f'\\nSeu guerreio é {Alastor_G.nome} ele possui {Alastor_G.vida} de vida e {Alastor_G.força} de força\\n')\n",
+        "\n",
+        "#AÇOES\n",
+        "Alastor_G.ataque_s()\n",
+        "Alastor_G.ataque_espada()\n",
+        "\n",
+        "#ESPAÇ_O\n",
+        "print(\"       \")"
+      ],
+      "metadata": {
+        "id": "i6gBLU4jwEQ5"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "armas"
+      ],
+      "metadata": {
+        "id": "D_0SdkmWw5YK"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "\n",
+        "class Armas:\n",
+        "    def __init__(self,nome,power):\n",
+        "        self.nome = nome\n",
+        "        self.power = power\n",
+        "\n",
+        "\n",
+        "Cajado_magico = Armas(\"Cajado_Magico\", 25)\n",
+        "Espada_longa = Armas('Espada_longa', 40)\n",
+        "\n",
+        "#print(f'{Espada_longa.nome} tem um dano igual á: {Espada_longa.power}')\n",
+        "#print(f'{Cajado_magico.nome} tem um dano igual á: {Cajado_magico.power}')\n",
+        "\n",
+        "#ESPAÇ_O\n",
+        "print(\"       \")\n",
+        "from Armas import Armas"
+      ],
+      "metadata": {
+        "id": "8IR7J4E6wJJC"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "arqueiro"
+      ],
+      "metadata": {
+        "id": "JeFndFnhw8Ai"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "\n",
+        "class Arqueiro:\n",
+        "    def __init__(self, nome, vida, força, mira):\n",
+        "        self.nome = nome\n",
+        "        self.vida = vida\n",
+        "        self.força = força\n",
+        "        self.mira = mira\n",
+        "\n",
+        "    def ataque_s(self):\n",
+        "        print(\"Vc atirou uma flecha!\")\n",
+        "\n",
+        "Lirio_A = Arqueiro('Lirio',70,40,60)\n",
+        "\n",
+        "print(f'\\nOla Arqueiro:{Lirio_A.nome}')\n",
+        "print(f'Sua vida total é atualmente {Lirio_A.vida}')\n",
+        "print(f'Possui Força {Lirio_A.força} e para o arco {Lirio_A.mira} de mira em tiros\\n')\n",
+        "\n",
+        "#açoes\n",
+        "Lirio_A.ataque_s()\n",
+        "\n",
+        "#ESPAÇ_O\n",
+        "print(\"       \")"
+      ],
+      "metadata": {
+        "id": "OYW47MvFwMjq"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "mosntro"
+      ],
+      "metadata": {
+        "id": "28DmTK7zw927"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "monstro"
+      ],
+      "metadata": {
+        "id": "5Tl29-q3xAar"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "class Monstros:\n",
+        "    def __init__(self, nome, vida, resist, força):\n",
+        "        self.nome = nome\n",
+        "        self.vida = vida\n",
+        "        self.resit = resist\n",
+        "        self.força = força\n",
+        "\n",
+        "    def ataque_s(self):\n",
+        "        print(\"Ataque!!\")\n",
+        "\n",
+        "#Status atual\n",
+        "Goblin = Monstros('Goblin',30,5,15)\n",
+        "\n",
+        "\n",
+        "print(f'\\nInimigo: {Goblin.nome}')\n",
+        "print(f'Vida: {Goblin.vida}')\n",
+        "print(f'Resistencia: {Goblin.resit}')\n",
+        "print(f'Força: {Goblin.força}\\n')\n",
+        "\n",
+        "#açoes\n",
+        "Goblin.ataque_s()\n",
+        "\n",
+        "\n",
+        "\n",
+        "#ESPAÇ_O\n",
+        "print(\"       \")"
+      ],
+      "metadata": {
+        "id": "DAMFjvtBwPoh"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
